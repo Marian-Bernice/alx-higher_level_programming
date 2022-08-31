@@ -7,6 +7,7 @@ def roman_to_int(roman_string):
     total = 0
     maxchar = 'I'
     new_list = roman_string[::-1]
+
     for elm2 in new_list:
         if letter[elm2] >= letter[maxchar]:
             maxchar = elm2

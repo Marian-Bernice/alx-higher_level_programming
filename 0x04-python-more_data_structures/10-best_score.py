@@ -6,6 +6,6 @@ def best_score(a_dictionary):
             if value < a_dictionary[key]:
                 value = a_dictionary[key]
                 user = key
-            return user
+        return user
     else:
         return None
