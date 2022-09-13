@@ -69,7 +69,7 @@ class Square:
                 print(" ", end="")
             for d in range(self.__size):
                 print("#", end="")
-                print("")
+            print("")
 
     @property
     def position(self):

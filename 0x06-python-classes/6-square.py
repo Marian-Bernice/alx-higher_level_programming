@@ -64,12 +64,12 @@ class Square:
             return
         for i in range(self.__position[1]):
             print()
-            for b in range(self.__size):
-                for c in range(self.__position[0]):
-                    print(" ", end="")
-                for d in range(self.__size):
-                    print("#", end="")
-                    print("")
+        for b in range(self.__size):
+            for c in range(self.__position[0]):
+                print(" ", end="")
+            for d in range(self.__size):
+                print("#", end="")
+            print("")
 
     @property
     def position(self):
