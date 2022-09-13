@@ -14,7 +14,7 @@ class Square:
             size (int): size of a side of the square
         Returns: None
         """
-        if type(size) is not int:
+        if type(size) != int:
             raise TypeError("size must be an integer")
         else:
             if size < 0:
