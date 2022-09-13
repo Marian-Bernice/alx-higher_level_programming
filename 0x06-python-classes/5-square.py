@@ -60,6 +60,6 @@ class Square:
             for i in range(self.__size):
                 for b in range(self.__size):
                     print("#", end='')
-                    print("")
-                else:
-                    print("")
+                print("")
+        else:
+            print("")
