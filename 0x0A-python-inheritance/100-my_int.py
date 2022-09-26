@@ -1,15 +1,10 @@
 #!/usr/bin/python3
-"""
-Myint class
-"""
+"""Adds a new attribute to an object if it is possible"""
 
 
-class MyInt(int):
-    """"""
-    def __eq__(self, other):
-        if isinstance(self, type(other)):
-            return False
-
-    def __ne__(self, other):
-        if isinstance(self, type(other)):
-            return True
+def add_attribute(clss, atrb, val):
+    """Using the method 'setattr()' to add attributes"""
+    if "__dict__" in dir(clss):
+        setattr(clss, atrb, val)
+    else:
+        raise TypeError("can't add new attribute")
