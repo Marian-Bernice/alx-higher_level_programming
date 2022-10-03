@@ -167,38 +167,38 @@ class testcases(unittest.TestCase):
             output = fi.getvalue()
             self.assertEqual(output, ("#" * 3 + "\n") * 3)
 
-        def test_display_arg(self):
-            """we just can call display, no pars args"""
-            with self.assertRaises(TypeError):
-                self.c1.display(1)
+    def test_display_arg(self):
+        """we just can call display, no pars args"""
+        with self.assertRaises(TypeError):
+            self.c1.display(1)
 
-        def test_str(self):
-            """testing __str__"""
-            self.assertEqual(str(self.c1), "[Square] (1) 0/0 - 1")
-            self.assertEqual(str(self.c2), "[Square] (2) 3/0 - 2")
-            self.assertEqual(str(self.c3), "[Square] (3) 4/5 - 3")
-            self.assertEqual(str(self.c4), "[Square] (4) 6/7 - 5")
-            self.assertEqual(str(self.c5), "[Square] (10) 8/9 - 7")
+    def test_str(self):
+        """testing __str__"""
+        self.assertEqual(str(self.c1), "[Square] (1) 0/0 - 1")
+        self.assertEqual(str(self.c2), "[Square] (2) 3/0 - 2")
+        self.assertEqual(str(self.c3), "[Square] (3) 4/5 - 3")
+        self.assertEqual(str(self.c4), "[Square] (4) 6/7 - 5")
+        self.assertEqual(str(self.c5), "[Square] (10) 8/9 - 7")
 
-         def test_display_x_y(self):
-            """tesing display x-y"""
-            test = Square(3, 4)
-            with io.StringIO() as fi, redirect_stdout(fi):
-                test.display()
-                output = fi.getvalue()
-                self.assertEqual(output, (" " * 4 + "#" * 3 + "\n") * 3)
+    def test_display_x_y(self):
+        """tesing display x-y"""
+        test = Square(3, 4)
+        with io.StringIO() as fi, redirect_stdout(fi):
+            test.display()
+            output = fi.getvalue()
+            self.assertEqual(output, (" " * 4 + "#" * 3 + "\n") * 3)
 
-            test = Square(3, 4, 6)
-            with io.StringIO() as fi, redirect_stdout(fi):
-                test.display()
-                output = fi.getvalue()
-                self.assertEqual(output, "\n" * 6 + (" " * 4 + "#" * 3 + "\n") * 3)
+        test = Square(3, 4, 6)
+        with io.StringIO() as fi, redirect_stdout(fi):
+            test.display()
+            output = fi.getvalue()
+            self.assertEqual(output, "\n" * 6 + (" " * 4 + "#" * 3 + "\n") * 3)
 
-            test = Square(3, 4, 4, 10)
-            with io.StringIO() as fi, redirect_stdout(fi):
-                test.display()
-                output = fi.getvalue()
-                self.assertEqual(output, "\n" * 4 + (" " * 4 + "#" * 3 + "\n") * 3)
+        test = Square(3, 4, 4, 10)
+        with io.StringIO() as fi, redirect_stdout(fi):
+            test.display()
+            output = fi.getvalue()
+            self.assertEqual(output, "\n" * 4 + (" " * 4 + "#" * 3 + "\n") * 3)
 
     def test_uptadint_args(self):
         """testing update *args"""
