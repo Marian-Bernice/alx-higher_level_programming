@@ -117,7 +117,7 @@ class Test_Rectangle_Area(unittest.TestCase):
     def set_up(self):
         """set to 0 the number of objects"""
         Base._Base__nb_objects = 0
-            
+
     def test_area(self):
         """test area"""
         self.set_up()
@@ -166,8 +166,8 @@ class Test_str(unittest.TestCase):
         r1_result = "[Rectangle] (12) 2/1 - 4/6"
         with patch('sys.stdout', new=StringIO()) as string:
             self.assertEqual(string.getvalue(), r1_result)
-            r2 = Rectangle(5, 5, 1)
-            r2_result = "[Rectangle] (1) 1/0 - 5/5"
+        r2 = Rectangle(5, 5, 1)
+        r2_result = "[Rectangle] (1) 1/0 - 5/5"
         with patch('sys.stdout', new=StringIO()) as string:
             self.assertEqual(draw.getvalue(), r2_result)
 
@@ -177,16 +177,16 @@ class Test_str(unittest.TestCase):
         r3_result = "[Rectangle] (3) 1/2 - 7/1"
         with patch('sys.stdout', new=StringIO()) as string:
             self.assertEqual(string.getvalue(), r3_result)
-            r3.id = 5
-            r3.x = 0
-            r3.y = 0
-            r3.width = 7
-            r3.height = 7
-            r3_new_result = "[Rectangle] (5) 0/0 - 7/7"
+        r3.id = 5
+        r3.x = 0
+        r3.y = 0
+        r3.width = 7
+        r3.height = 7
+        r3_new_result = "[Rectangle] (5) 0/0 - 7/7"
         with patch('sys.stdout', new=StringIO()) as string:
             self.assertEqual(string.getvalue(), r3_new_result)
 
-    
+
 class Test_Display(unittest.TestCase):
     """Test class for display method"""
 
@@ -337,8 +337,8 @@ class Test_Update(unittest.TestCase):
         """pass valid and not valid kwargs to function"""
         self.set_nb_to_zero()
         r1 = Rectangle(2, 1, 10, 0)
-        r1.update(id=123, width=987, height=432, x=940
-                y=758, other='random', ok='rand val')
+        r1.update(id=123, width=987, height=432, x=940,
+                  y=758, other='random', ok='rand val')
         self.assertEqual(r1.id, 123)
         self.assertEqual(r1.width, 987)
         self.assertEqual(r1.height, 432)
@@ -358,7 +358,7 @@ class Test_Update(unittest.TestCase):
         self.set_nb_to_zero()
         r1 = Rectangle(2, 1, 10, 0)
         r1.update(129, 234, id=123, width=987, height=432,
-                x=940, y=758, other='random', ok='rand val')
+                  x=940, y=758, other='random', ok='rand val')
         self.assertEqual(r1.id, 129)
         self.assertEqual(r1.width, 234)
         self.assertEqual(r1.height, 1)
@@ -391,7 +391,6 @@ class Test_Update(unittest.TestCase):
         # pass bool to update x
         with self.assertRaisesRegex(TypeError, 'x must be an integer'):
             r1.update(28, 3, 23, True)
-
 
     def test_args_as_iterable_obj(self):
         """pass iterable args to update function"""
@@ -437,7 +436,7 @@ class Test_Update(unittest.TestCase):
         self.assertEqual(r1.x, 23)
         self.assertEqual(r1.y, 345)
 
-    
+
 class Test_Dictionary_Representation(unittest.TestCase):
     """Test case class for update function"""
     def set_nb_to_zero(self):
@@ -503,8 +502,9 @@ class TestRectangle(unittest.TestCase):
         Base._Base__nb_objects = 0
         cls.r1 = Rectangle(10, 10)
         cls.r2 = Rectangle(2, 3, 4)
-        cls.r3 = Rectangle(5, 6, 7, 8, 9)                                   
+        cls.r3 = Rectangle(5, 6, 7, 8, 9)
         cls.r4 = Rectangle(11, 12, 13, 14)
+
 
     def test_y_typeerror(self):
         """Test non-ints for y"""
@@ -526,6 +526,7 @@ class TestRectangle(unittest.TestCase):
             r = Rectangle(1, -1)
         with self.assertRaisesRegex(ValueError, "height must be > 0"):
             r = Rectangle(1, 0)
+
 
     def test_str(self):
         """Test the str method"""

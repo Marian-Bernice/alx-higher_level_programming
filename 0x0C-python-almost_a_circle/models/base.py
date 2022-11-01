@@ -8,6 +8,7 @@ and avoid duplicating the same code
 import csv
 import json
 
+
 class Base:
     """base class"""
     __nb_objects = 0
@@ -25,7 +26,7 @@ class Base:
         """returns the JSON string representation of a list of dictionaries"""
         if list_dictionaries is None:
             list_dictionaries = []
-            return json.dumps(list_dictionaries)
+        return json.dumps(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):
@@ -64,8 +65,8 @@ class Base:
         try:
             with open(filename, 'r') as fi:
                 file = cls.from_json_string(fi.read())
-                for i, e in enumerate(file):
-                    file[i] = cls.create(**file[i])
+            for i, e in enumerate(file):
+                file[i] = cls.create(**file[i])
         except:
             pass
         return file
@@ -79,11 +80,11 @@ class Base:
             if cls.__name__ == "Rectangle":
                 for obj in list_objs:
                     csv_writer.writerow([obj.id, obj.width, obj.height,
-                                        obj.x, obj.y])
-                elif cls.__name__ == "Square":
-                    for obj in list_objs:
-                        csv_writer.writerow([obj.id, obj.size, obj.x, obj.y])
-    
+                                         obj.x, obj.y])
+            elif cls.__name__ == "Square":
+                for obj in list_objs:
+                    csv_writer.writerow([obj.id, obj.size, obj.x, obj.y])
+
     @classmethod
     def load_from_file_csv(cls):
         """using cvf"""
@@ -95,15 +96,15 @@ class Base:
                 for args in csv_reader:
                     if cls.__name__ == "Rectangle":
                         dictionary = {"id": int(args[0]),
-                                    "width": int(args[1]),
-                                    "height": int(args[2]),
-                                    "x": int(args[3]),
-                                    "y": int(args[4])}
+                                      "width": int(args[1]),
+                                      "height": int(args[2]),
+                                      "x": int(args[3]),
+                                      "y": int(args[4])}
                     elif cls.__name__ == "Square":
                         dictionary = {"id": int(args[0]), "size": int(args[1]),
-                                "x": int(args[2]), "y": int(args[3])}
-                        obj = cls.create(**dictionary)
-                        l.append(obj)
+                                      "x": int(args[2]), "y": int(args[3])}
+                    obj = cls.create(**dictionary)
+                    l.append(obj)
         except:
             pass
         return l

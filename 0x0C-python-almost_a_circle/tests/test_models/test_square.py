@@ -83,7 +83,7 @@ class testcases(unittest.TestCase):
         self.assertEqual(self.c3.x, 4)
         self.assertEqual(self.c4.x, 6)
         self.assertEqual(self.c5.x, 8)
-        
+
     def test_y(self):
         """test"""
         self.assertEqual(self.c1.y, 0)
