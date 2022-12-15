@@ -2,25 +2,17 @@
 """Test function find_peak"""
 
 
-def find_peak(numbr):
-    '''
-    Finds the peak in a list of numbers
-    '''
-    length = len(numbr)
-    if length == 0:
-        return None
-    if length == 1:
-        return (numbr[0])
-    if length == 2:
-        return numbr[0] if numbr[0] >= numbr[1] else numbr[1]
+def find_peak(list_of_integers):
+    """finds a peak"""
 
-    for idx in range(0, length):
-        value = numbr[idx]
-        if (idx > 0 and idx < length - 1 and
-                numbr[idx + 1] <= value and numbr[idx - 1] <= value):
-                return value
-        elif idx == 0 and numbr[idx + 1] <= value:
-            return value
-        elif idx == length - 1 and numbr[idx - 1] <= value:
-            return value
-    return pick
+    new_l = list_of_integers
+    le = len(new_l)
+    if le == 0:
+        return
+    m = le // 2
+    if (m == le - 1 or new_l[m] >= new_l[m + 1]) and (m == 0 or new_l[m]
+                                                      >= new_l[m - 1]):
+        return new_l[m]
+    if m != le - 1 and new_l[m + 1] > new_l[m]:
+        return find_peak(new_l[m + 1:])
+    return find_peak(new_l[:m])
